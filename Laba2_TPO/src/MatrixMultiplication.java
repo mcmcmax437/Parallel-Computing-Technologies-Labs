@@ -25,16 +25,47 @@ public class MatrixMultiplication {
         long start = System.currentTimeMillis();
         int[][] result1 = multiplyBasic(matrix1, matrix2);
         long end = System.currentTimeMillis();
-        System.out.println("Time taken for basic method: " + (end - start) + " ms");
+        double time = (end - start) / 1000.0;
+        System.out.println("Time taken for basic method: " + time + " sec");
 
         // Multiply matrices using Fox algorithm
         start = System.currentTimeMillis();
         int[][] result2 = multiplyFox(matrix1, matrix2, numThreads);
         end = System.currentTimeMillis();
-        System.out.println("Time taken for Fox algorithm: " + (end - start) + " ms");
+        time = (end - start) / 1000.0;
+        System.out.println("Time taken for Fox algorithm: " + time + " sec");
+
+        // Multiply matrices using Stripe algorithm and output time taken
+        start = System.currentTimeMillis();
+        int[][] resultStripe = multiplyStripe(matrix1, matrix2, numThreads);
+        end = System.currentTimeMillis();
+        time = (end - start) / 1000.0;
+        System.out.println("Time taken for Stripe algorithm: " + time + " sec");
 
         sc.close();
     }
+
+    public static int[][] multiplyStripe(int[][] matrix1, int[][] matrix2, int numThreads) {
+        int size = matrix1.length;
+        int[][] result = new int[size][size];
+
+        Thread[] threads = new Thread[numThreads];
+        for (int i = 0; i < numThreads; i++) {
+            threads[i] = new Thread(new StripeTask(matrix1, matrix2,result, numThreads, i));
+            threads[i].start();
+        }
+        // Wait for all threads to finish
+        for (int i = 0; i < numThreads; i++) {
+            try {
+                threads[i].join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return result;
+    }
+
 
     // Basic matrix multiplication method
     public static int[][] multiplyBasic(int[][] matrix1, int[][] matrix2) {
@@ -119,4 +150,35 @@ public class MatrixMultiplication {
             }
         }
     }
-}
+
+    public static class StripeTask implements Runnable {
+        private int[][] matrix1;
+        private int[][] matrix2;
+        private int[][] result;
+        private int numThreads;
+        private int threadId;
+
+        public StripeTask(int[][] matrix1, int[][] matrix2, int[][] result, int numThreads, int threadId) {
+            this.matrix1 = matrix1;
+            this.matrix2 = matrix2;
+            this.result = result;
+            this.numThreads = numThreads;
+            this.threadId = threadId;
+        }
+
+        @Override
+        public void run() {
+            int size = matrix1.length;
+            int blockSize = size / numThreads;
+
+            for (int i = threadId * blockSize; i < (threadId + 1) * blockSize; i++) {
+                for (int j = 0; j < size; j++) {
+                    for (int k = 0; k < size; k++) {
+                        result[i][j] += matrix1[i][k] * matrix2[k][j];
+                    }
+                }
+            }
+        }
+    }
+
+    }
