@@ -35,7 +35,7 @@ public synchronized void syncTransfer(int from, int to, int amount) throws Inter
     }
   }
 
-  public synchronized void syncBlockTransfer(int from, int to, int amount) throws InterruptedException {
+  public void syncBlockTransfer(int from, int to, int amount) throws InterruptedException {
     synchronized (sync) {
       accounts[from] -= amount;
       accounts[to] += amount;

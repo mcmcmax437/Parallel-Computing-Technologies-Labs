@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="96da7b38-b713-43e8-8b64-0df112006cdd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T1/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T1/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T1/TransferThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T1/TransferThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T2/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T2/Producer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T3/ElectronicJournal.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/out/production/Laba3_TPO/T3/ElectronicJournal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/src/T1/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/src/T1/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/src/T1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/src/T1/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/src/T2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/src/T2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laba3_TPO/src/T3/ElectronicJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Laba3_TPO/src/T3/ElectronicJournal.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PEjGqoAxdwIjsjOtUy3vxATGVU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Labs/Parallel-Computing-Technologies-Labs/MKR2_T23",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="MKR" type="Application" factoryName="Application">
+      <envs>
+        <env name="MPJ_HOME" value="C:\mpj" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="ArraySum" />
+      <module name="MKR2_T18" />
+      <option name="VM_PARAMETERS" value="-jar C:/mpj\lib\starter.jar -np 6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="96da7b38-b713-43e8-8b64-0df112006cdd" name="Changes" comment="" />
+      <created>1683029044551</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683029044551</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.reflect.InvocationTargetException" package="java.lang.reflect" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -22,7 +22,7 @@ public class ElectronicJournal {
         journal = new int[NUM_GROUPS][NUM_STUDENTS_PER_GROUP];
     }
 
-    public void runSimulation() {
+    public void run() {
         ArrayList<Thread> threads = new ArrayList<>();
 
         for (int i = 0; i < NUM_LECTURERS; i++) {
@@ -40,7 +40,6 @@ public class ElectronicJournal {
             }
         }
 
-        // print journal
         for (int i = 0; i < NUM_GROUPS; i++) {
             System.out.print("Group" + (i+1) + " -- ");
             for (int j = 0; j < NUM_STUDENTS_PER_GROUP; j++) {
@@ -54,7 +53,7 @@ public class ElectronicJournal {
         Random random = new Random();
 
         while (true) {
-            // check if all students have been graded
+
             boolean allGraded = true;
             for (int[] group : journal) {
                 for (int grade : group) {
@@ -71,36 +70,33 @@ public class ElectronicJournal {
                 break;
             }
 
-            // pick a random group
+
             int groupId = random.nextInt(NUM_GROUPS);
             Lock groupLock = groupLocks[groupId];
 
-            // try to acquire the group lock
+
             if (groupLock.tryLock()) {
                 try {
-                    // check if all students have been graded in this group
+
                     if (Arrays.stream(journal[groupId]).allMatch(grade -> grade > 0)) {
                         continue;
                     }
 
-                    // pick a random student in the group who hasn't been graded yet
                     int studentId;
                     do {
                         studentId = random.nextInt(NUM_STUDENTS_PER_GROUP);
                     } while (journal[groupId][studentId] > 0);
 
-                    // assign a random grade
                     int grade = random.nextInt(MAX_GRADE) + 1;
                     journal[groupId][studentId] = grade;
 //                    if(lecturerId+1 == 1) {
-//                        System.out.println("Lecturer " + (lecturerId + 1) + " assigned grade " + grade +
-//                                " to student " + (studentId + 1) + " in group " + (groupId + 1));
+//                        System.out.println("Lec " + (lecturerId + 1) + " give " + grade +
+//                                " Student " + (studentId + 1) + " Group " + (groupId + 1));
 //                    }
-                    System.out.println("Lecturer " + (lecturerId + 1) + " assigned grade " + grade +
-                            " to student " + (studentId + 1) + " in group " + (groupId + 1));
+                    System.out.println("Lec" + (lecturerId + 1) + " give " + grade +
+                            " Student " + (studentId + 1) + " Group" + (groupId + 1));
 
                 } finally {
-                    // release the group lock
                     groupLock.unlock();
                 }
             }
@@ -112,6 +108,6 @@ public class ElectronicJournal {
 
     public static void main(String[] args) {
         ElectronicJournal journal = new ElectronicJournal();
-        journal.runSimulation();
+        journal.run();
     }
 }
