@@ -13,26 +13,17 @@ public class Main {
   public static void simpleRun(boolean printMatrices) {
     int sizeAxis0 = 2000;
     int sizeAxis1 = 2000;
-
     Matrix A = new Matrix(sizeAxis0, sizeAxis1);
     Matrix B = new Matrix(sizeAxis0, sizeAxis1);
-
     A.generateRandomMatrix();
     B.generateRandomMatrix();
-
-
     int nThread = Runtime.getRuntime().availableProcessors();
-
     BasicAlgorithm ba = new BasicAlgorithm(A, B);
-
     long currTimeBasic = System.currentTimeMillis();
     Matrix C = ba.multiply();
     currTimeBasic = System.currentTimeMillis() - currTimeBasic;
-
     if (printMatrices) C.print();
-
     System.out.println("Time for Basic Algorithm: " + currTimeBasic);
-
     long currTimeFox = System.currentTimeMillis();
     ForkJoinPool forkJoinPool = new ForkJoinPool(nThread);
     C = forkJoinPool.invoke(new FoxAlgorithm(A, B, 6));
@@ -46,17 +37,14 @@ public class Main {
         "SpeedUp (timeBasic / timeFoxForkJoin): " + (double) currTimeBasic / currTimeFox);
 
     if (sizeAxis0 == 2000) {
-      /*
-      22474 - this is average execution time for Fox algorithm (from assignment 2)
-       */
       System.out.println(
-          "SpeedUp (timeFox / timeFoxForkJoin): " + (double) 22474 / currTimeFox);
+          "SpeedUp (timeFox / timeFoxForkJoin): " + (double) 2973 / currTimeFox);
     }else if (sizeAxis0 == 1000){
       System.out.println(
-              "SpeedUp (timeFox / timeFoxForkJoin): " + (double) 14045 / currTimeFox );
+              "SpeedUp (timeFox / timeFoxForkJoin): " + (double) 321 / currTimeFox );
     }else if  (sizeAxis0 == 500){
       System.out.println(
-              "SpeedUp (timeFox / timeFoxForkJoin): " + (double) 6812 / currTimeFox);
+              "SpeedUp (timeFox / timeFoxForkJoin): " + (double) 85 / currTimeFox);
     }
   }
 }

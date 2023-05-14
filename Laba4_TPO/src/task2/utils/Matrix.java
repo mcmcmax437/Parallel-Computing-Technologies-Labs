@@ -12,7 +12,6 @@ public class Matrix {
     this.sizeAxis0 = sizeAxis0;
     this.sizeAxis1 = sizeAxis1;
   }
-
   public void print() {
     for (int i = 0; i < this.sizeAxis0; i++) {
       for (int j = 0; j < this.sizeAxis1; j++) {
@@ -21,16 +20,12 @@ public class Matrix {
       System.out.println();
     }
   }
-
-
   public int getSizeAxis0() {
     return this.sizeAxis0;
   }
-
   public int getSizeAxis1() {
     return this.sizeAxis1;
   }
-
   public void generateRandomMatrix() {
     for (int i = 0; i < this.sizeAxis0; i++) {
       for (int j = 0; j < this.sizeAxis1; j++) {

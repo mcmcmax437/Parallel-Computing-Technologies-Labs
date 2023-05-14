@@ -3,22 +3,17 @@ package task2.fox;
 import task2.utils.Matrix;
 import java.util.HashMap;
 import java.util.concurrent.RecursiveTask;
-
 public class FoxAlgorithmForkJoin extends RecursiveTask<HashMap<String, Object>> {
   private final Matrix A;
   private final Matrix B;
-
   private final int stepI;
   private final int stepJ;
-
   public FoxAlgorithmForkJoin(Matrix A, Matrix B, int stepI, int stepJ) {
     this.A = A;
     this.B = B;
-
     this.stepI = stepI;
     this.stepJ = stepJ;
   }
-
   private Matrix multiplyBlock() {
     Matrix blockRes = new Matrix(A.getSizeAxis1(), B.getSizeAxis0());
     for (int i = 0; i < A.getSizeAxis0(); i++) {
@@ -30,7 +25,6 @@ public class FoxAlgorithmForkJoin extends RecursiveTask<HashMap<String, Object>>
     }
     return blockRes;
   }
-
   @Override
   protected HashMap<String, Object> compute() {
     Matrix blockRes = multiplyBlock();

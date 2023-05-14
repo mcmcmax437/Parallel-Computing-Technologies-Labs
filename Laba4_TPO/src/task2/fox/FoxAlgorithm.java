@@ -78,7 +78,6 @@ public class FoxAlgorithm extends RecursiveTask<Matrix> {
     }
     return block;
   }
-
   @Override
   protected Matrix compute() {
     List<RecursiveTask<HashMap<String, Object>>> tasks = new ArrayList<>();
@@ -91,7 +90,6 @@ public class FoxAlgorithm extends RecursiveTask<Matrix> {
 
           int stepI1 = matrixOfSizesI[i][(i + l) % nBlocks];
           int stepJ1 = matrixOfSizesJ[i][(i + l) % nBlocks];
-
           int stepI2 = matrixOfSizesI[(i + l) % nBlocks][j];
           int stepJ2 = matrixOfSizesJ[(i + l) % nBlocks][j];
 
@@ -107,21 +105,17 @@ public class FoxAlgorithm extends RecursiveTask<Matrix> {
         }
       }
     }
-
     for (RecursiveTask<HashMap<String, Object>> task : tasks) {
       HashMap<String, Object> r = task.join();
-
       Matrix blockRes = (Matrix) r.get("blockRes");
       int stepI = (int) r.get("stepI");
       int stepJ = (int) r.get("stepJ");
-
       for (int i = 0; i < blockRes.getSizeAxis0(); i++) {
         for (int j = 0; j < blockRes.getSizeAxis1(); j++) {
           C.matrix[i + stepI][j + stepJ] += blockRes.matrix[i][j];
         }
       }
     }
-
     return this.C;
   }
 }

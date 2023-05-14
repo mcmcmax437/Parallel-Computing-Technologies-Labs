@@ -4,16 +4,13 @@ import java.util.HashMap;
 
 import static task1.Algorithms.ParallelAlgo;
 import static task1.Algorithms.SyncAlgo;
-
 public class Main {
     public static int ITTER = 500_000;
     private static final String PATH = "text/text2.txt";
-
     public static void main(String[] args) {
         measureTime(() ->  SyncAlgo(PATH),"synchronized");
         measureTime(() ->  ParallelAlgo(PATH),"parallel");
     }
-
     private static void measureTime(Runnable runnable, String type) {
         long startTime = System.currentTimeMillis();
         runnable.run();
@@ -37,9 +34,7 @@ public class Main {
                 dispersion += Math.pow(lengthKey - meadWordsLength, 2);
             }
         }
-
         dispersion /= wordsAmount;
-
         System.out.println("All words: " + wordsAmount);
         System.out.println("Mean word: " + Math.round(meadWordsLength * 100.0) / 100.0);
         System.out.println("Word length variance: " + Math.round(dispersion * 100.0) / 100.0);

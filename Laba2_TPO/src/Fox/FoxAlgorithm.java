@@ -10,23 +10,16 @@ public class FoxAlgorithm {
             || matrixA.length != matrixB.length) {
                 throw new RuntimeException("Matrix must be squared!");
         }
-
         int size = matrixA.length;
-
         if(size % numOfThreads != 0) {
             throw new RuntimeException("Block size is invalid for this matrix!");
         }
-
         int[][] resultMatrix = new int[size][size];
         var threads = new ArrayList<Thread>();
-
         int gridSize = (int) Math.sqrt(numOfThreads);
-
         int[][][][] leftBlocks = divideMatrix(matrixA, gridSize);
         int[][][][] rightBlocks = divideMatrix(matrixB, gridSize);
-
         FoxSyncObject syncObject = new FoxSyncObject(leftBlocks, rightBlocks);
-
         for (int i = 0; i < gridSize; i++) {
             for (int j = 0; j < gridSize; j++) {
                 Thread thread = new FoxThread(i, j, gridSize, syncObject, resultMatrix);
@@ -35,20 +28,16 @@ public class FoxAlgorithm {
                 thread.start();
             }
         }
-
         for (Thread th : threads) {
             try{
                 th.join();
             } catch (InterruptedException ignored) {}
         }
-
         return new Result(resultMatrix);
     }
-
     private static int[][][][] divideMatrix(int[][] matrix, int gridSize) {
         int blockSize = matrix.length / gridSize;
         int[][][][] blocks = new int[gridSize][gridSize][blockSize][blockSize];
-
         for (int i = 0; i < gridSize; i++) {
             for (int j = 0; j < gridSize; j++) {
                 for (int k = 0; k < blockSize; k++) {
@@ -56,7 +45,6 @@ public class FoxAlgorithm {
                 }
             }
         }
-
         return blocks;
     }
 }

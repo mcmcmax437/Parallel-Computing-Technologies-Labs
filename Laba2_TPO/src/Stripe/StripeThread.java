@@ -1,7 +1,6 @@
 package Stripe;
 
 import java.util.ArrayList;
-
 public class StripeThread extends Thread {
     private ArrayList<int[]> rowsOfMatrixA;
     private ArrayList<Integer> rowsNumber;
@@ -9,7 +8,6 @@ public class StripeThread extends Thread {
     private int[][] result;
     private final int columnsCount;
     private int currentColumnIndex;
-
     public StripeThread( ArrayList<int[]> rowsOfMatrixA, ArrayList<Integer> rowsNumber, StripeSyncObject syncObj, int currentColumnIndex, int[][] result) {
         this.rowsOfMatrixA = rowsOfMatrixA;
         this.rowsNumber = rowsNumber;
@@ -18,7 +16,6 @@ public class StripeThread extends Thread {
         this.columnsCount = result[0].length;
         this.currentColumnIndex = currentColumnIndex % columnsCount;
     }
-
     @Override
     public void run() {
         for (var r = 0; r < rowsOfMatrixA.size(); r++) {

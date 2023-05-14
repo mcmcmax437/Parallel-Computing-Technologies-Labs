@@ -7,7 +7,6 @@ public class FoxThread extends Thread {
     private final int blocksGridSize;
     private final int[][] result;
     private final int blockSize;
-
     FoxThread(int i, int j, int blocksGridSize, FoxSyncObject syncObject, int[][] result) {
         this.syncObject = syncObject;
         this.i = i;
