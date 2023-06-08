@@ -6,8 +6,8 @@ import time
 
 app = Flask(__name__)
 
-matrix1 = np.random.rand(5000, 5000)
-matrix2 = np.random.rand(5000, 5000)
+matrix1 = (1, 1, 1, 1, 1, 1, 1)
+matrix2 = (1, 1, 1, 1, 1, 1, 1)
 
 def multiply_chunk(chunk):
     return np.dot(chunk, matrix2)

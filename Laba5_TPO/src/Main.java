@@ -10,15 +10,16 @@ import java.util.concurrent.Future;
 public class Main {
 
 
-    public static final int CHANNELS = 7;
+    public static final int CHANNELS = 5;
     public static final int QUEUE_SIZE = 10;
 
     public static void main(String[] args) throws Exception {
-        task1();
-       // task2(5);
-        //task3();
+         task3();
     }
 
+
+    //task2(5);
+    //task3();
     public static void task1() {
         SystemInitializer task = new SystemInitializer(false, CHANNELS, QUEUE_SIZE);
         var results = task.call();
@@ -30,13 +31,10 @@ public class Main {
     public static void task2(int systemInstancesCount) throws Exception {
         ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         var tasks = new ArrayList<Callable<double[]>>();
-
         for (int i = 0; i < systemInstancesCount; i++)
             tasks.add(new SystemInitializer(false, CHANNELS, QUEUE_SIZE));
-
         List<Future<double[]>> resultList = executor.invokeAll(tasks);
         executor.shutdown();
-
         double totalAveragesMessages = 0, totalPercentages = 0;
         for(var result : resultList) {
             var info = result.get();
@@ -44,7 +42,6 @@ public class Main {
             totalAveragesMessages += info[1];
             totalPercentages += info[0];
         }
-
         printStatistic(totalPercentages / resultList.size(), totalAveragesMessages / resultList.size());
     }
 
