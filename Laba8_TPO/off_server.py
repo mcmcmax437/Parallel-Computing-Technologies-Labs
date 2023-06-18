@@ -8,6 +8,7 @@ app = Flask(__name__)
 def multiply_rows(args):
     row, matrix2 = args
     return np.dot(row, matrix2)
+    
 
 @app.route('/multiply', methods=['POST'])
 def matrix_multiply():
